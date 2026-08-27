@@ -1,0 +1,134 @@
+{
+  "project_name": "Pokemon TCG Collection Value Tracker",
+  "theme": {
+    "mode": "dark",
+    "rationale": "Dark mode emphasizes the vibrant colors and holographic nature of trading cards, while presenting a serious, premium 'fintech' aesthetic suited for tracking real-market monetary values and misprint investments."
+  },
+  "typography": {
+    "headings": {
+      "font_family": "Outfit, sans-serif",
+      "usage": "H1-H4, major section titles. Must use tracking-tight and avoid generic bolding. Use font-light or font-black for tension.",
+      "google_font_url": "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap"
+    },
+    "body": {
+      "font_family": "Manrope, sans-serif",
+      "usage": "Standard UI text, descriptions, labels.",
+      "google_font_url": "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap"
+    },
+    "data_and_numbers": {
+      "font_family": "'IBM Plex Mono', monospace",
+      "usage": "All monetary values, prices, card numbers, stats, and historical data points. Reinforces the data-driven 'fintech' feel.",
+      "google_font_url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    }
+  },
+  "colors": {
+    "archetype": "ARCHETYPE 5: LUXURY & ARCHETYPE 7: ELECTRIC (Blended for Collectibles)",
+    "palette": {
+      "background": "#050505",
+      "surface": "#121215",
+      "surface_elevated": "#1C1C21",
+      "border": "#27272A",
+      "primary_accent": "#FACC15",
+      "primary_accent_foreground": "#050505",
+      "holographic_gradient": "linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #D946EF 100%)",
+      "text_primary": "#FAFAFA",
+      "text_secondary": "#A1A1AA",
+      "success_green": "#22C55E",
+      "danger_red": "#EF4444"
+    },
+    "rules": [
+      "Never use pure black or pure gray. Always tint backgrounds slightly with blue or purple.",
+      "Use holographic_gradient sparingly: only for text clipping on 'Misprints' or 'Special Cards' highlights, or as a 1px glowing border on rare card containers.",
+      "Primary CTA buttons use the primary_accent (Volt Gold) for high visibility against the dark theme.",
+      "All text must meet minimum APCA contrast ratios. Normal text over 4.5:1, large text over 3:1."
+    ]
+  },
+  "visual_enhancers": {
+    "surfaces": [
+      "Dashboard widgets and normal cards: Flat Solid (Surface Elevated #1C1C21) with 1px border (#27272A), no heavy shadows. Radius: rounded-xl.",
+      "Sticky Navs/Modals: Crystal Glassmorphism. bg-black/60, backdrop-blur-xl, border-b border-white/10.",
+      "Rare/Special Card Highlights: The 'Tracing Beam' effect or a subtle 1px holographic border gradient to signify high-value items."
+    ],
+    "motion": [
+      "Card Hover: Slight lift (-translate-y-2), scale up (scale-105), and a dynamic glare/sheen effect overlay traversing the card.",
+      "List Entrances: Staggered fade-up for collection grid items.",
+      "Hover states: All buttons and interactive rows must have distinct, lighter background hover states."
+    ]
+  },
+  "layouts_and_grids": {
+    "dashboard_overview": {
+      "style": "High Density Grid (For Dashboards/Analytics)",
+      "configuration": "grid-cols-1 md:grid-cols-3 lg:grid-cols-4, gap-4 or gap-6",
+      "span_logic": "Total Value widget spans 1 or 2 cols. Main Value Over Time chart spans col-span-2 row-span-2 or col-span-3. Recent acquisitions as a narrow vertical list (col-span-1 row-span-2)."
+    },
+    "collection_grid": {
+      "style": "Bento / Gallery Grid",
+      "configuration": "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5, gap-6",
+      "rules": "Each card container must have negative space around the image. Cards should maintain exact aspect ratios of standard TCG cards (approx 2.5 : 3.5)."
+    },
+    "spacing_philosophy": "Generous Spacing (Tailwind Scale). Use p-6 to p-8 inside cards, keeping tight gaps (gap-4) between the cards to balance density with breathing room."
+  },
+  "components_strategy": {
+    "custom_html_tailwind": [
+      "Pokemon Card displays (needs custom 3D tilt and glare overlays, Shadcn cards are too rigid).",
+      "Special Card Highlights and Misprint showcase widgets."
+    ],
+    "shadcn_ui": [
+      "Dialog (for Add-to-Collection Modal with photo upload).",
+      "Select (for Card Condition: Mint, NM, LP, etc.).",
+      "Tabs (for switching between Dashboard, Collection, Wishlist).",
+      "Input / Command (for Pokemon TCG API card search autocomplete).",
+      "Chart (for Portfolio Value over time, powered by Recharts)."
+    ]
+  },
+  "libraries_and_tools": {
+    "icons": "@phosphor-icons/react (Duotone weight for rich, detailed iconography)",
+    "charts": "recharts (integrated via Shadcn Chart component) - use dark theme tooltips and stroke colors matching the primary accent.",
+    "motion": "framer-motion (for card tilt effects, page transitions, and staggered grid loading).",
+    "notifications": "sonner (for success/error toasts when adding/removing cards)."
+  },
+  "image_urls": [
+    {
+      "category": "Holographic/Special Effects Background",
+      "url": "https://images.pexels.com/photos/4021530/pexels-photo-4021530.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Use as a very low opacity (10-20%) background image inside the 'Top Valuable Cards' or 'Misprints' container to give a shiny foil vibe."
+    },
+    {
+      "category": "Vault/Empty State",
+      "url": "https://images.pexels.com/photos/14866072/pexels-photo-14866072.jpeg",
+      "description": "Use for the 'Empty Collection' state or dashboard hero banner, heavily darkened with an overlay."
+    },
+    {
+      "category": "Trading Cards/Wishlist Graphic",
+      "url": "https://images.pexels.com/photos/7809125/pexels-photo-7809125.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Use as a placeholder graphic for the 'Wishlist' section header or onboarding screen."
+    }
+  ],
+  "accessibility_and_testing": {
+    "contrast": "Ensure text over holographic gradients has sufficient text-shadow or a dark backing pill.",
+    "testing_attributes": "All interactive elements (Add button, search input, condition dropdown, specific card clicks) MUST have a data-testid attribute (e.g., data-testid='add-card-button', data-testid='search-api-input').",
+    "reduced_motion": "Respect prefers-reduced-motion for the 3D card tilts."
+  },
+  "instructions_to_main_agent": [
+    "DO NOT use generic centered layouts. Ensure all dashboards and grids are left-aligned or optically aligned.",
+    "Integrate standard Pokemon TCG API endpoints for card search. The user wants to easily detect the card (show high-res card images in the search dropdown).",
+    "Prioritize the monetary value display. Real-money numbers should use the IBM Plex Mono font, colored in Gold/Volt or Success Green to trigger a dopamine response.",
+    "Build a specific section for 'Misprints / Special Cards' that highlights market anomalies. Make this visually distinct with a subtle holographic border.",
+    "Use Phosphor icons. You must install the package: yarn add @phosphor-icons/react",
+    "For the Add Card modal, include a file input for 'Photo Upload' and inputs for Condition (Mint, NM, etc.), Quantity, and Purchase Price.",
+    "Never use completely transparent backgrounds for Modals or Dropdowns; apply a solid dark background (#121215) or heavy backdrop-blur.",
+    "Install and use framer-motion for micro-interactions on the card grids."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. Avoid the 'AI slop' aesthetic.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur) where appropriate.",
+    "You MUST NOT apply universal transition (e.g., transition: all). Add transitions for specific properties.",
+    "You MUST NOT center align the app container. Do not add .App { text-align: center; }.",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style.",
+    "NEVER use AI assistant Emoji characters (like 🤖🧠💭) for icons. Use Phosphor icons.",
+    "Every interaction needs micro-animations - hover states, transitions. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "NEVER use placeholder URLs (via.placeholder.com). Use the provided image_urls."
+  ]
+}
